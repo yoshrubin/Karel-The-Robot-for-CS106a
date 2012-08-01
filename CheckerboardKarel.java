@@ -23,10 +23,15 @@ public class CheckerboardKarel extends SuperKarel {
 		}
 	}
 	private void buildCheckerBoard() { //builds beeper and moves one space then checks for wall
-		putBeeper();
-		checkForWall();
+        if ((facingEast()) || (facingNorth())) {
+            putBeeper();
+            checkForWall();
+            else {
+                checkForWall();
+                putbeeper();
+            }
 	}
-	private void checkForWall() { //checks if the wall is on east or west to know were to turn
+	private void checkForWall() { //checks if the wall is on east or west north or south (east and west for 1 hight rectangles) to know were to turn
 		if ((facingSouth()) && (frontIsBlocked())) {
 			southWall();
 		}
@@ -50,7 +55,7 @@ public class CheckerboardKarel extends SuperKarel {
 			}
 		}
 	}
-	private void southWall() { //wall on bottom
+	private void southWall() { //if wall on bottom turn aroung on next level
 			turnLeft();
 			if (frontIsBlocked()) {
 				turnLeft();
@@ -61,7 +66,7 @@ public class CheckerboardKarel extends SuperKarel {
 					buildCheckerBoard();
 			}			
 	}
-	private void northWall() { //wall on top
+	private void northWall() { //if wall on top turn aroung on next level
 			turnRight();
 			if (frontIsBlocked()){
 				turnLeft();
@@ -73,7 +78,7 @@ public class CheckerboardKarel extends SuperKarel {
 				buildCheckerBoard();
 			}
 	}
-	private void eastWall() { //wall on bottom
+	private void eastWall() { //if wall on east turn aroung on next level
 			turnLeft();
 			if (frontIsBlocked()) {
 				turnLeft();
@@ -85,7 +90,7 @@ public class CheckerboardKarel extends SuperKarel {
 					buildCheckerBoard();
 			}
 	}	
-	private void westWall() { //wall on top
+	private void westWall() { //if wall on west turn turn aroung on next level
 			turnRight();
 			if (frontIsBlocked()){
 				turnLeft();
