@@ -12,35 +12,83 @@ import stanford.karel.*;
 public class CheckerboardKarel extends SuperKarel {
 
 	public void run() {
-		buildCheckerBoard();
+		turnLeft();
+		if (frontIsBlocked()){
+			turnRight();
+			buildCheckerBoard();
+		}
+		else{
+			buildCheckerBoard();
+	
+		}
 	}
 	private void buildCheckerBoard() { //builds beeper and moves one space then checks for wall
 		putBeeper();
-		move();
 		checkForWall();
 	}
 	private void checkForWall() { //checks if the wall is on east or west to know were to turn
-		if ((facingEast()) && (frontIsBlocked())) {
-			eastWall();
+		if ((facingSouth()) && (frontIsBlocked())) {
+			southWall();
+		}
+		else if ((facingNorth()) && (frontIsBlocked())) {
+			 northWall();
+		}
+		else if ((facingEast()) && (frontIsBlocked())) {
+			 eastWall();
 		}
 		else if ((facingWest()) && (frontIsBlocked())) {
 			 westWall();
 		}
-		else if (frontIsClear()) { // if no wall  continue building
+		else if (frontIsClear()) { //if no wall  continue building
 			move();
-			buildCheckerBoard();
+			if (frontIsClear()) {
+				move();
+				buildCheckerBoard();
+			}
+			else {
+				checkForWall();
+			}
 		}
 	}
-	private void eastWall() { //wall on east 
+	private void southWall() { //wall on bottom
 			turnLeft();
-			move();
-			turnLeft();
-			buildCheckerBoard();
+			if (frontIsBlocked()) {
+				turnLeft();
+		}
+			else {	
+					move();
+					turnLeft();
+					buildCheckerBoard();
+			}			
 	}
-	private void westWall() { // wall on west
+	private void northWall() { //wall on top
 			turnRight();
 			if (frontIsBlocked()){
+				turnLeft();
+		}
+			else {
+				move();
 				turnRight();
+				move();
+				buildCheckerBoard();
+			}
+	}
+	private void eastWall() { //wall on bottom
+			turnLeft();
+			if (frontIsBlocked()) {
+				turnLeft();
+		}
+			else {	
+					move();
+					turnLeft();
+					move();
+					buildCheckerBoard();
+			}
+	}	
+	private void westWall() { //wall on top
+			turnRight();
+			if (frontIsBlocked()){
+				turnLeft();
 		}
 			else {
 				move();
