@@ -39,17 +39,14 @@ public class CheckerboardKarel extends SuperKarel {
 	}
 	private void westWall() { // wall on west
 			turnRight();
-			checkToEnd();
-	}
-	private void checkToEnd() {//to end loop and not hit wall and finish west wall algorythm
-		if (frontIsBlocked()){
-			turnRight();
-	}
-		else {
-			move();
-			turnRight();
-			buildCheckerBoard();
+			if (frontIsBlocked()){
+				turnRight();
 		}
+			else {
+				move();
+				turnRight();
+				buildCheckerBoard();
+			}
 	}	
 }
 
