@@ -14,33 +14,34 @@ public class CheckerboardKarel extends SuperKarel {
 	public void run() {
 		buildCheckerBoard();
 	}
-	private void buildCheckerBoard() {
+	private void buildCheckerBoard() { //builds beeper and moves one space then checks for wall
 		putBeeper();
 		move();
-		checkForWall1();
+		checkForWall();
 	}
-	private void checkForWall1() {
+	private void checkForWall() { //checks if the wall is on east or west to know were to turn
 		if ((facingEast()) && (frontIsBlocked())) {
+			eastWall();
+		}
+		else if ((facingWest()) && (frontIsBlocked())) {
+			 westWall();
+		}
+		else if (frontIsClear()) { // if no wall  continue building
+			move();
+			buildCheckerBoard();
+		}
+	}
+	private void eastWall() { //wall on east 
 			turnLeft();
 			move();
 			turnLeft();
 			buildCheckerBoard();
-		}
-		else {
-			checkForWall2();
-		}
 	}
-	private void checkForWall2() {
-		if ((facingWest()) && (frontIsBlocked())) { 
+	private void westWall() { // wall on west
 			turnRight();
 			checkToEnd();
-		}
-		else {
-			move();
-			buildCheckerBoard();
-		}	
 	}
-	private void checkToEnd() {
+	private void checkToEnd() {//to end loop and not hit wall and finish west wall algorythm
 		if (frontIsBlocked()){
 			turnRight();
 	}
