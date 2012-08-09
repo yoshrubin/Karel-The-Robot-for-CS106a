@@ -12,30 +12,15 @@
 
 import stanford.karel.*;
 
+/*
+ * Name: 
+ * Section Leader: 
+ */
+
 public class MidpointFindingKarel extends SuperKarel {
 
 	public void run() {
-        if (frontIsClear()) {
-                moveToMidpoint();
-        }
-        putBeeper();
-}
-
-private void moveToMidpoint() { // starting east, for every two corners Karel moves east, after reaching the east end of the street, Karel moves back one corner to the west.
-        if (facingEast()) { // move up to two corners to the east, if possible
-                move();
-                if (frontIsClear()) {
-                        move();
-                        if (frontIsClear()) {
-                                moveToMidpoint(); //method calls itself
-                        } else {
-                                turnAround(); // turn around, if end of street in the east is reached
-                        }
-                } else {
-                                turnAround(); // turn around, if end of street in the east is reached
-                }
-        }
-        move(); // move back one corner to the west
-}
+		// You fill in this part
+	}
 
 }

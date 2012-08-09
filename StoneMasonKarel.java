@@ -10,48 +10,15 @@
 
 import stanford.karel.*;
 
+/*
+ * Name: 
+ * Section Leader: 
+ */
+
 public class StoneMasonKarel extends SuperKarel {
+
 	public void run() {
-	turnLeft();
-	moveToBuildColumn();
-	turnRight();
-	nextColumn();
-	turnRight();
-	moveToBuildColumn();
-	turnLeft();
-	nextColumn();
-	turnLeft();
-	moveToBuildColumn();
-	turnRight();
-	nextColumn();
-	turnRight();
-	moveToBuildColumn();
-	turnLeft();
+		// You fill in this part
 	}
-private void buildColumn() {
-	if (noBeepersPresent())
-		putBeeper();
-}
-private void moveForward() {
-	if (frontIsClear()) {
-		move();
-	}
-}
-private void moveToBuildColumn() {
-	buildColumn();
-	moveForward();
-	buildColumn();
-	moveForward();
-	buildColumn();
-	moveForward();
-	buildColumn();
-	moveForward();
-	buildColumn();
-}
-private void nextColumn() {
-	move();
-	move();
-	move();
-	move();
-}
+
 }
