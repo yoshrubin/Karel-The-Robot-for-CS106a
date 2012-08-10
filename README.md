@@ -1,0 +1,2 @@
+I take no credit for the code here (though I wish I could) this was taken from http://randuff.blogspot.co.il/2011/08/cs106-programming-methodology_15.html
+just posting it here cause its the best code for these programs I saw on the web the documentation is great hope it helps you too.
